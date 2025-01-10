@@ -225,6 +225,14 @@ async function deleteRecipe(recipeId) {
     }
 }
 
+async function testDbConnection() {
+    try {
+        await pool.query('SELECT * FROM maxima_categories;');
+        console.log('Connected to the PostgreSQL server');
+    } catch (error) {
+        console.error('Error connecting to the PostgreSQL server:', error);
+    }
+}
 
 
 
@@ -239,5 +247,6 @@ module.exports = {
     addProductToRecipe,
     getRecipe,
     getProductsFromList,
+    testDbConnection,
     
 }

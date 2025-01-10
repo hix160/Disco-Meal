@@ -236,8 +236,25 @@ async function getProducts(tableName, productIds) {
 
 
 async function test(req, res) {    //just a test/debuging function
-    const {username, password} = req.body;
-    console.log(username, password, " testing 123");
+    try {
+        console.log('Test request received');
+        res.status(200).json({ message: 'Test request received' });
+    } catch (error) {
+        console.error('Error in test request:', error);
+        res.status(500).json({ error: 'An error occurred while processing the test request' });
+    }
+    
+}
+
+async function testDb(req,res) {
+    try {
+        console.log('Test db request received');
+        const result = await db.testDb();
+        res.status(200).json({ message: 'Test db request received', result });
+    } catch (error) {
+        console.error('Error in test db request:', error);
+        res.status(500).json({ error: 'An error occurred while processing the test db request' });
+    }
     
 }
 
@@ -255,5 +272,6 @@ module.exports = {
     getRecipes,
     editRecipe,
     updateRecipeProductList,
-    test
+    test,
+    testDb
 }
