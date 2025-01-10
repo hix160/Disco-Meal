@@ -3,7 +3,7 @@ const indexController = require("../controllers/indexController");
 
 const indexRouter = Router();
 
-indexRouter.get("/", indexController.loadHome);
+
 indexRouter.get("/load/:tableId", indexController.loadData);
 indexRouter.get("/load/:tableName/:categorieId", indexController.loadProdutsTable);
 

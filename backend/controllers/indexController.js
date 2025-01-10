@@ -2,11 +2,6 @@
 const db = require("../db/queries");
 const bcrypt = require('bcrypt');
 
-async function loadHome(req,res) {
-    
-    res.render("index");
-}
-
 async function loadData(req, res) {
     try {
 
