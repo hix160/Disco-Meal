@@ -249,7 +249,8 @@ async function test(req, res) {    //just a test/debuging function
 async function testDb(req,res) {
     try {
         console.log('Test db request received');
-        const result = await db.testDb();
+        const result = await db.testDbConnection();
+        
         res.status(200).json({ message: 'Test db request received', result });
     } catch (error) {
         console.error('Error in test db request:', error);
