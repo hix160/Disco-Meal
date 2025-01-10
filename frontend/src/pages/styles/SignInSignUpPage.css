@@ -1,0 +1,177 @@
+
+
+
+.singin-signup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+
+    & .form-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 5vh 4vw;
+        background-color: var(--col4);
+        border-radius: 4vh;
+        border: 1px solid black;
+        font-size: 2vh;
+        
+        & p {
+            text-align: center;
+        }
+
+        & button {
+            
+            padding: 2vh;
+            width: fit-content;
+            border-radius: 1vh;
+            background-color: rgba(0, 0, 0, .05);
+            font-size: 2.5vh;
+            font-weight: 700;
+
+        }
+
+        & .switch-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 70%;
+            position: relative;
+            margin-top: 4vh;
+
+        
+            & .toggle-switch {
+                position: relative;
+                display: inline-block;
+                width: 80px;
+                height: 40px;
+                cursor: pointer;
+            }
+
+            & .toggle-switch input[type="checkbox"] {
+                display: none;
+            }
+
+            .toggle-background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: var(--col5);
+                border-radius: 20px;
+                box-shadow: inset 0 0 0 2px var(--col5);
+                transition: background-color 0.3s ease-in-out;
+
+                
+            }
+
+            & .toggle-handle {
+                position: absolute;
+                top: 5px;
+                left: 5px;
+                width: 30px;
+                height: 30px;
+                background-color: var(--col4);
+                border-radius: 50%;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            & .toggle-switch::before {
+                content: "";
+                position: absolute;
+                top: -25px;
+                right: -35px;
+                font-size: 12px;
+                font-weight: bold;
+                color: var(--col2);
+                text-shadow: 1px 1px var(--col1);
+                transition: color 0.3s ease-in-out;
+            }
+              
+            & .toggle-switch input[type="checkbox"]:checked + .toggle-handle {
+                transform: translateX(45px);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 0 3px var(--col1)
+            }
+              
+            & .toggle-switch input[type="checkbox"]:checked + .toggle-background {
+                background-color: var(--col1);
+                box-shadow: inset 0 0 0 2px var(--col1)
+            }
+              
+            & .toggle-switch input[type="checkbox"]:checked + .toggle-switch:before {
+                content: "On";
+                color: #05c46b;
+                right: -15px;
+            }
+              
+            & .toggle-switch input[type="checkbox"]:checked + .toggle-background .toggle-handle {
+                transform: translateX(40px);
+            }
+
+        }
+        
+    }
+
+    & form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+
+    & .input-wraper {
+        
+        display: flex;
+        flex-direction: column;
+        height: 72px;
+        padding: 10px;
+        position: relative;
+        
+
+        & label {
+            position: absolute;
+            user-select: none;
+            transition:0.2s linear;
+            font-weight: 900;
+            margin: 1rem 1rem;
+            padding: 0 5px;
+            background-color: var(--col4);
+            
+            
+
+        }
+
+        & input {
+            background-color: rgba(0, 0, 0, 0);
+            border-radius:  1.5vh ;
+            border: 2px solid black;
+            padding:1rem 1rem;
+            font-size: 2vh;
+            
+        }
+
+        & input, label {
+            
+            align-items: center;
+            
+        }
+
+        & input:focus + label,
+        & input:valid + label {
+            transform: translateY(-26px) scale(0.9);
+            transition: 0.2s linear;
+        }
+
+        
+
+        
+    }
+
+
+}

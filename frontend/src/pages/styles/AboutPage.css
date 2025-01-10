@@ -1,0 +1,42 @@
+
+
+.about{
+    font-size: 3vh;
+    display: flex;
+    flex-direction: column;
+    margin: 10vh 5vw;
+    
+
+}
+
+
+.about > .title {
+    height: 10vh;
+}
+
+.info.container {
+    display: flex;
+    flex-direction: column;
+    margin: 1vh 5vw;
+}
+
+.icon {
+    height: 60px;
+    margin: 1rem;
+}
+
+.flex-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+@media (min-width:375px) and (max-width:425px) {
+
+    .about {
+        margin: 5vh 2vw
+    }
+     
+    
+}

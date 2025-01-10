@@ -1,0 +1,232 @@
+
+
+
+.recipes{
+    display: flex;
+    gap: 1vw;
+    height: 80vh;
+    
+
+    & .recipe-contents {
+        
+        display: flex;
+        width:100%;
+        gap: 1vw;
+        flex-direction: row;
+        
+
+        & .recipe-info {
+            background-color: var(--col4);
+            flex: 5;
+            
+            display: flex;
+            flex-direction: column;
+            padding: 2vh 1vw;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            
+            & .top-part {
+                display: flex;
+                
+
+                & .button-container {
+                    display: flex;
+
+                }
+
+                & button {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: .75vh;
+                    border-radius: 1.5vh;
+                    border:0;
+                    background-color: rgba(0, 0, 0, 0);
+                    transition: 0.1s linear;
+                }
+
+                & button:hover{
+                    transform: scale(1.2);
+                }
+                & button:active {
+                    transform: scale(1.05);
+                    transition: .1s;
+                }
+                
+                & img {
+                    width: 2vw;
+                    height: 2vw;
+                }
+
+
+            }
+
+            & input, & input:active, & input:focus {
+                background-color: rgba(0, 0, 0, 0);
+                border: 0;
+                
+                font-size: 3vh;
+                outline: none;
+                padding: 1vh 1vw;
+                font-family: var(--font-secondary);
+                flex-grow: 1;
+                
+            }
+            
+            & textarea {
+                background-color: rgba(0, 0, 0, 0);
+                border: 0;
+                font-size: 2vh;
+                outline: none;
+                height: 100%;
+                width: inherit;
+                padding: 1vh 1vw 2vh 2vw;
+                line-height: 1.5;
+                font-family: var(--font-primary);
+                text-indent: 2vw;
+                resize: none;
+                
+            } 
+            
+            
+        }
+
+        & .product-list {
+            background-color: var(--col4);
+            flex: 1.5;
+            padding: 1vh 1vw;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+
+            & .product-card{
+                margin: 1vh 0;
+                
+            }
+
+            & h3 {
+                text-align: center;
+                border-bottom: 2px solid black;
+                padding-bottom: .5vh;
+            }
+
+            & li {
+                
+            }
+
+            & .price {
+                display: flex;
+                width: 50%;
+                justify-content: space-between;
+                
+                & > div{
+                    
+                }
+
+            }
+
+            
+            
+        }
+    }
+
+
+
+    & .sidepanel {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        & .add-button {
+            width: 50%;
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+            border-radius:1vh ;
+
+            
+
+            & img {
+                height: 36px;
+            }
+        }
+
+        & .add-button:hover {
+            background-color: rgba(0, 0, 0, 0.1)
+        }
+        
+        & .card-container {
+            
+            width:17vw;
+            max-height: 70vh;
+            overflow-y: auto;
+            margin: 1vh 0;
+            
+
+            & .card:hover {
+                transform:scale(.96);
+                cursor: pointer;
+            }
+            
+            & .card {
+                display: flex;
+                justify-content: space-between;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+                margin: 1vh;
+                padding: .5vw;
+
+                transition: 0.15s ease-out;
+
+                & .info {
+                    
+                    width: 65%;
+                    & div {
+                        margin-bottom: 0.5vh;
+                    }
+
+                    & .title {
+                        font-size: 1.2rem;
+                        font-family: var(--font-secondary);
+                        margin-bottom: 1vh;
+                    }
+
+                    & #discount-sum {
+                        color: #01dc30;
+                    }
+                }
+
+                & .icon-container {
+                   
+
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    gap: 5px;
+                    justify-content: right;
+                    
+                    & button {
+                        background-color: rgba(0, 0, 0, 0);
+                        
+                        border: 0;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 1vh;
+                        padding: .25vh;
+                        
+                    }
+
+                    & button:hover {
+                        background-color:var(--col5);
+                    }
+
+                    & img {
+                        height: 36px;
+                        width: 36px;
+                    }
+                }
+            }
+        }
+    }
+
+    & .recipe-contents {
+        
+    }
+
+}

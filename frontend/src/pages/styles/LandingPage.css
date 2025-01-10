@@ -1,0 +1,141 @@
+
+:root {
+    
+
+}
+
+
+
+.landing.page {
+    width: 100%;
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20vh;
+    font-weight: 900;
+    
+    position: relative;
+
+    & .title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: var(8vw * 2);
+        height: 12vh;
+        position: relative;
+        
+    }
+    
+}
+
+.test {
+    height: 50rem;
+}
+
+
+
+
+
+.linkbutton {
+    padding: 0.5vw 1vw;
+    margin: 0 1vw;
+    font-size: 2vh;
+    border-radius: 1vh;
+    background-color: var(--col1);
+    border: 0;
+}
+
+.landing > .container {
+    padding: 2% 4%;
+    display: flex;
+    justify-content: space-around;
+    
+    
+}
+
+
+
+
+
+
+
+
+.logo {
+    height: 100%;
+    margin: 1vw;
+    
+    
+    
+}
+
+.landing > .title > .logo {
+    opacity: 0;
+    transition: opacity 3s ease-out;
+}
+
+
+.landing > .title > h1 {
+    
+    font-size: 10vh;
+    margin: 0;
+    padding-right: 2vw;
+    
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    
+}
+
+
+.landing > .description {
+    display: flex;
+    padding-top: 2rem;
+    font-size: 3vh;
+    flex-direction: column;
+    align-items: center;
+    opacity: 0;
+    
+    transition: opacity 3s ease-out;
+    
+}
+
+.landing > .description.fade-in, .landing> .title > .logo.fade-in {
+    opacity: 1;
+    
+}
+
+@media (min-width:375px) and (max-width:425px) {
+
+    .landing > .title > h1 {
+    font-family: var(--font-secondary);
+    font-size: 4vh;
+    margin: 0;
+    
+    width:48vw;
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+
+    .landing > .container {
+        padding: 5vh;
+        gap: 5vw;
+    }
+    .linkbutton {
+        padding: 1vh 2vh;
+    }
+    
+    .title {
+        height: 6vh;
+    }
+    .landing > .description {
+        text-align: center;
+    }
+     
+    
+}
+
+
+
+

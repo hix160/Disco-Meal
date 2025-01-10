@@ -1,0 +1,106 @@
+
+
+Idejas TODO:
+    - db -> pievienot timestamp db datiem lai tiktu salīdzināti ar tiem kuri ir lietotājam. Ja dati nav jaunākie tad tie tiek nolādēti, ja ir tad paliek. (timestamp table? vnk id/nosaukums un time)
+        - vrbt pārveidot biku db lai vnk atsūta pilno json kad lietotājs ienāk vietnē. -> json tiktu glabāts local storage un pēc vajadzības tiktu atpakots (lai mazāks noslogojums uz network)
+
+    - webscraper -> Viss kas ir saistīts ar scrapošanu (vrbt vajadzētu to noņemt un ļaut developeram izvēlēties kā viņš scrapo?)
+        - refractor code!
+
+    - Discounts -> uztaisīt lai var uzspiest uz tbulas th un atiecīi tiek sakārtots acs vai desc.
+
+    - Uzlabot renderēšanu
+
+    - Dashboard -> pielabot profile div n shit
+
+    - Discount -> pievienot search bar lai atrastu konkrētus produktus !!!!
+        - pielikt opciju paslēpt kategorijas pie h2> Kategorijas.
+
+    - CSS -> visiem css failiem un lapām pārbaudīt kā ir ja samazina ekrānu, kā ir ja maina fonta izmēru.
+
+
+
+Right now TODO:
+    - login/signup -> priekš signup nav lietotājvārda pārbaude (nepārbauda vai lietotājvārds jau neeksistē)
+        - nav paroļu stipruma pārbaude (vnj min paroli ar 8 simboliem un dažādiem) !!!!!
+        - needs authentication priekš dashboard. (tāpatās pie dashboard nevar tikt caur website/dashboard)
+            ja pat var tad vrbt nevar redzēt ko citi taisa vai arī nevar taisīt receptes (vismaz tā ka datubāzē saglabājas)
+        
+
+
+
+
+/**
+    MAXIMA
+
+    21 - kategorija
+    41konditorija, 42alkaholiskie, 44konservacijas, 46preces dzivniekiem, 47bezalkaholiskie
+    48apgerbi un apavi, 49zivis un zivju iztr, 51bakaleja, 52kosmetika un higena,
+    54saldumi, 55sadzives kimija, 56augli un darzeni, 57kafija kako teja, 58augi un kop lidzekli
+    60piena prod un olas, 61maize, 62rupniecibas preces, 63saldeti prod, 64mazulu preces
+    65,kulinarija, 67galas un gala iztr
+
+    
+
+
+    default url https://www.maxima.lv/ajax/salesloadmore?sort_by=newest&limit=15&search=
+    ,kur 
+    limit var uzlikt lielaku piem 100
+    un pie search= var pielikt kategorijas
+
+    https://www.maxima.lv/ajax/salesloadmore?limit=20&search=&categories%5B%5D=56
+    limit=counter
+    search=&categories%5B%5D=dataId
+    
+
+
+    RIMI
+
+    17 - kategorijas
+    2augli un darzeni, 17gatavots rim, 16vaganeim un beg, 6gala zivis un gatava kulinarija,
+    11piena prod un olas, 7maize un konditorija, 12saldetie edieni, 4iepakota partika
+    13saldumi un zkodas, 5dzerieni, 1alkoholiskie, 18vini, 14skaistum un higena,
+    8majdzivniekime, 10sadzives kimija, 3majai,darzam un atuptai
+
+    https://www.rimi.lv/e-veikals/lv/produkti/gala-zivis-un-gatava-kulinarija/c/SH-6?query=%3Arelevance%3AallCategories%3ASH-6%3AassortmentStatus%3AinAssortment&currentPage=1&pageSize=80
+
+    kategorijas ir jau dotas iekš Fetch/XHR   https://www.rimi.lv/e-veikals/api/v1/content/category-tree?locale=lv kategoriju idetifikācija ir SH-...
+
+    Lai pievienotos konkrētai kategorijai, var izmantot
+    https://www.rimi.lv/e-veikals/lv/produkti/c/SH-19
+    ,kur
+    SH-kaegorijas numurs
+    ?currentPage=izvelas lapu
+
+    Saistībā ar html datiem kurus vjg savakt no produkta
+        - katrs produkts ir iekš <li class "product-grid__item">
+        - <div class="card__details"
+        - <div class="card__name"
+        produkts ar atlaidi
+        - <div class="price-tag card__price" <span> un <sup> ja paretn ir klase -has-discount tad šī cena ir discount cena
+        - <div class="old-price-tag card__old-price" <span> kur ir pilna cena bez <sup>
+
+
+
+
+
+ */
+// 
+
+CREATE TABLE recipes (
+    id SERIAL PRIMARY KEY,                  -- Auto-incrementing ID for each recipe
+    recipe_title VARCHAR(255) NOT NULL,    -- Title of the recipe, required
+    recipe_content TEXT NOT NULL,          -- Content/description of the recipe
+    is_public BOOLEAN DEFAULT false,       -- Whether the recipe is public or not
+    product_list JSON DEFAULT NULL,        -- (Optional) List of products for the recipe in JSON format
+    user_id INT REFERENCES users(id)       -- User ID from the `users` table, linking to the creator
+);
+
+CREATE TABLE recipes (
+    id SERIAL PRIMARY KEY,              
+    recipe_title VARCHAR(255) NOT NULL,
+    recipe_content TEXT NOT NULL,    
+    is_public BOOLEAN DEFAULT false,      
+    product_list JSON DEFAULT NULL,
+    user_id INT REFERENCES users(id)
+);

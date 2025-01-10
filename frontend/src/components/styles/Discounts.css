@@ -1,0 +1,173 @@
+
+
+
+.discounts {
+    display:flex;
+    flex-direction: row;
+    gap:2vw;
+    padding: 0 2vw;
+    
+    
+    
+    & .drop-down{
+        position: absolute;
+        background-color: var(--col4);
+        top:35vh;
+        left:35vw;
+        width:30vw;
+        height: 30vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+
+        & button {
+            border:1px solid;
+        }
+
+        & button:active {
+            background-color: rgba(0, 0, 0, .1)
+        }
+
+        & button:hover {
+            transform: scale(1.05);
+        }
+        
+        
+    }
+    
+
+    & button {
+        padding: 5px;
+        font-size: 1.35vh;
+        font-family: var(--font-secondary);
+        background-color: var(--col4)
+        
+    }
+
+    & .categories {
+        
+        max-height: min-content;
+        flex:1;
+
+        & table {
+            width: 100%;
+        }
+        
+        & th {
+            padding: 2vh 0 .5vh 0;
+            font-size: 2vh;
+
+            
+        }
+
+        & td {
+            
+
+            & button {
+                
+                width: 100%;
+                transition: 0.15s ease-out;
+                border: 1px solid rgba(0, 0, 0, 0);
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            & button:hover {
+                transform: translateX(1rem);
+                
+            }
+            
+        }
+
+        & .button-container {
+            display: flex;
+            justify-content: space-between;
+
+            & button {
+                width: 45%;
+                transition: 0.2s linear;
+                border: 1px solid rgba(0, 0, 0, 0);
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            }
+
+            & button:hover {
+                transform: translateY(-0.3vh);
+            }
+            
+        }
+
+    }
+
+    
+
+    & .products {
+        flex: 5;
+        
+        height: 100%;
+
+        .table-container::-webkit-scrollbar {
+            width: 1vw;
+        }
+
+        .table-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, .1);
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background:var(--col5);
+            
+            border-radius: 10px; /* Rounded corners */
+        }
+        
+        & .table-container {
+            max-height: 75vh;
+            overflow-y: auto;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            
+            
+
+            & table {
+                width: 100%;
+                
+                
+                
+            }
+            
+            & tbody tr:nth-child(odd) {
+                background-color: rgba(0, 0, 0, .1);
+            }
+
+            & th {
+                background-color: var(--col1);
+                padding: 1vh;
+                transition: 0.15s ease-out;
+                position: sticky;
+                top:0;
+            }
+
+            & th:hover {
+                cursor: pointer;
+                background-color: var(--col5);
+            }
+
+            & td {
+                padding:5px 0 0 10px;
+            }
+
+            & tbody {
+                & tr:hover {
+                    background-color: rgba(0, 0, 0, 0.3);
+                    cursor: pointer;
+                }
+            }
+            
+        }
+
+
+
+        
+    }
+    
+}
