@@ -246,7 +246,7 @@ async function test(req, res) {    //just a test/debuging function
 
 
 module.exports = {
-    loadHome,
+    
     loadData,
     loadProdutsTable,
     registerUser,
