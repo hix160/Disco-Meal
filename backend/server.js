@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+require("dotenv").config();
 
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
@@ -35,9 +36,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/", indexRouter);
 
+const PORT = process.env.PORT;
+const IP = process.env.IP;
 
-const IP = "192.168.0.111" //ethernet
-const PORT = 5000;
+
 app.listen(PORT,IP, ()=> {
     console.log(`Listening on port ${PORT}!`)
 })
