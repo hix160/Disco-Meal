@@ -19,7 +19,7 @@ const corsOptions = {
     optionsSuccessStatus: 200
   };
 
-app.use(cors(corsOptions));
+
 const app = express();
 
 app.use(session({
@@ -33,7 +33,7 @@ app.use(session({
 
 }))
 
-
+app.use(cors(corsOptions));
 
 
 app.use(passport.initialize())
