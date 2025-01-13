@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './styles/SignInSignUpPage.css'
 import { useNavigate } from "react-router-dom";
+import { useApiUrl } from "../hooks/useApiUrl";
 
 
 const SignInSignUpPage = () => {
@@ -9,6 +10,7 @@ const SignInSignUpPage = () => {
     const [message, setMessage] = useState("");
 
     const navigate = useNavigate();
+    const apiUrl = useApiUrl();
 
     const toggleForm = () => {
         setSignIn(!isSignIn);
@@ -18,7 +20,7 @@ const SignInSignUpPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const apiEndpoint = isSignIn ? "/api/sign-in" : "/api/sign-up";
+        const apiEndpoint = isSignIn ? `${apiUrl}/sign-in`: `${apiUrl}/sign-up`;
 
         try {
             const res = await fetch(apiEndpoint, {

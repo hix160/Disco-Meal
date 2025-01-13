@@ -9,7 +9,7 @@ module.exports = new Pool({
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT || 5432, //default postgresql port is 5432
     ssl: {
-        // Enable SSL connection
-        rejectUnauthorized: false,
+        
+        rejectUnauthorized: false, //bīstami!!!
       },
 })
