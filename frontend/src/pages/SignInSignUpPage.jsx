@@ -11,6 +11,7 @@ const SignInSignUpPage = () => {
 
     const navigate = useNavigate();
     const apiUrl = useApiUrl();
+    console.log(apiUrl);
 
     const toggleForm = () => {
         setSignIn(!isSignIn);
