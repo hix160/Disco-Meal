@@ -6,12 +6,20 @@ const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const session = require("express-session");
 
+const cors = require("cors");
+
 
 require("dotenv").config();
 
 const indexRouter = require("./routers/indexRouter");
 
+const corsOptions = {
+    origin: ['https://disco-meal.vercel.app', 'http://192.168.0.111:3000'],
+    credentials: true,
+    optionsSuccessStatus: 200
+  };
 
+app.use(cors(corsOptions));
 const app = express();
 
 app.use(session({
