@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import LoadTable from './LoadTable';
 import LoadProducts from './LoadProducts';
 import './styles/Discounts.css';
+import { useApiUrl } from '../hooks/useApiUrl';
 
 function Discounts() {
     const [tableData, setTableData] = useState(null);
@@ -18,12 +19,14 @@ function Discounts() {
     const [showList, setShowList] = useState(false);
     const [tempText, setTempText] = useState('');
     const [recipeList, setRecipeList] = useState(null);
+
+    const apiUrl = useApiUrl();
     
     async function fetchRecipeList() {
         try {
             const user = JSON.parse(sessionStorage.getItem('user'))
             
-            const res = await fetch(`/api/recipe/${user.id}`)
+            const res = await fetch(`${apiUrl}/recipe/${user.id}`)
             const data = await res.json();
             
 
@@ -49,7 +52,7 @@ function Discounts() {
                     return;
                 }
                 
-                const res = await fetch(`/api/load/${tableId}`);
+                const res = await fetch(`${apiUrl}/load/${tableId}`);
                 const data = await res.json();
                 setTableData(data);
                 localStorage.setItem(tableId, JSON.stringify(data));
@@ -74,7 +77,7 @@ function Discounts() {
                     return;
                 }
 
-                const res = await fetch(`/api/load/${tableName}/${categorieId}`);
+                const res = await fetch(`${apiUrl}/load/${tableName}/${categorieId}`);
                 const data = await res.json();
                 setProductTableData(data);
                 console.log(data);
@@ -125,7 +128,7 @@ function Discounts() {
     async function postProductInRecipe(data) {
         try {
             console.log('Sending request to add product to recipe:', data);
-            const response = await fetch('/api/recipe/add', {
+            const response = await fetch(`${apiUrl}/recipe/add`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

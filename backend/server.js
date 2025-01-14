@@ -2,11 +2,15 @@ const express = require("express");
 const path = require("path");
 require("dotenv").config();
 
+
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const session = require("express-session");
+const pgSession = require("connect-pg-session")(session);
+
 
 const cors = require("cors");
+
 
 
 require("dotenv").config();
