@@ -3,6 +3,7 @@ import RecipeCard from "./RecipeCard";
 import RecipeContents from "./RecipeContents";
 import AddImg from '../assets/icons/add_24dp.png'
 import useRecipes from "../hooks/useRecipes";
+import useApiUrl from "../hooks/useApiUrl";
 import './styles/Recipes.css'
 
 function Recipes() {
@@ -14,6 +15,8 @@ function Recipes() {
     const [isPublic, setPublic] = useState(false);
     const [selectedRecipe, setSelectedRecipe] = useState(null);
 
+    const apiUrl = useApiUrl();
+
 
     const handlePostRecipe = async (text, title) => {
         const user = JSON.parse(sessionStorage.getItem('user'));
@@ -21,7 +24,7 @@ function Recipes() {
             {recipeTitle: title, recipeContent: text, userId: user.id, recipeId: recipeId, isPublic: isPublic, deleteRecipe: deleteRecipe} : 
             {recipeTitle: title, recipeContent: text, userId: user.id};
         
-        const apiEndpoint = recipeId ? '/api/recipe/edit' : '/api/recipe';
+        const apiEndpoint = recipeId ? `${apiUrl}/recipe/edit` : `${apiUrl}/recipe`;
 
         try {
             const res = await fetch(apiEndpoint, {

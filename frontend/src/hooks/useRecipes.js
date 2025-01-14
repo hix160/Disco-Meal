@@ -1,15 +1,18 @@
 import { useState, useEffect, useCallback } from 'react';
+import useApiUrl from './useApiUrl';
 
 function useRecipes() {
   const [recipeList, setRecipeList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const apiUrl = useApiUrl();
+
 
   const fetchRecipes = useCallback(async () => {
     setIsLoading(true);
     try {
       const user = JSON.parse(sessionStorage.getItem('user'));
-      const result = await fetch(`/api/recipe/${user.id}`);
+      const result = await fetch(`${apiUrl}/recipe/${user.id}`);
       if (!result.ok) {
         throw new Error('Failed to fetch recipes');
       }
