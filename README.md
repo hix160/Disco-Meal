@@ -9,3 +9,6 @@ The data is sourced from two major retail stores:
 - **Rimi**
 
 This project was initially created for personal use, and it serves as a way to showcase my skills and knowledge in building full-stack web applications.
+
+Please keep in mind that this project is a work in progress.
+live demo: https://disco-meal.vercel.app/
