@@ -23,15 +23,27 @@ function RecipeCard({ data, handleCard }) {
     return { totalPrice: totalPrice.toFixed(2), totalDiscount: totalDiscount.toFixed(2), savings: savings.toFixed(2) };
   };
 
+  const handleCardClick = (index, event) => {
+    // Call handleCard with index and false for normal card click
+    handleCard(index, false);
+  }
+
+  const handleButtonClick = (index, event) => {
+    event.stopPropagation();
+    // Call handleCard with index and true for add to shopping list
+    handleCard(index, true);
+  };
+
   return (
     <div className="card-container">
+      
       {data && data.length > 0 ? (
         data.map((row, index) => {
           // Calculate totals for each recipe
           const { totalPrice, totalDiscount, savings } = calculateTotals(row.product_list);
 
           return (
-            <div key={index} className="card" onClick={() => handleCard(index)}>
+            <div key={index} className="card" onClick={() => handleCard(index, false)}>
               <div className="info">
                 <div className="title">{row.recipe_title}</div>
                 <div>Cena: {totalPrice}€</div>
@@ -40,7 +52,7 @@ function RecipeCard({ data, handleCard }) {
               </div>
 
               <div className="icon-container">
-                <button>
+                <button onClick={(e) => handleButtonClick(index, e)}>
                   <img src={AddImg} alt="Add to Cart" />
                 </button>
               </div>

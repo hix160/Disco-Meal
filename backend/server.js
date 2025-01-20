@@ -6,7 +6,7 @@ require("dotenv").config();
 const passport = require("passport");
 const LocalStrategy = require('passport-local').Strategy;
 const session = require("express-session");
-const pgSession = require("connect-pg-session")(session);
+
 
 
 const cors = require("cors");

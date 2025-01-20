@@ -213,6 +213,46 @@ async function getProductsFromList(tableName, productList) {
     }
 }
 
+async function getOneProduct(tableName, productId) {
+    try {
+        const query = `
+            SELECT * FROM ${tableName} WHERE id = $1;
+        `
+        const result = await pool.query(query, [productId]);
+        //console.log(result.rows[0]);
+        return result.rows[0];
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function updateShoppingList(userId, shopingList) {
+
+    try {
+        const query = `
+            UPDATE users_config
+            SET shoping_list = $1
+            WHERE user_id = $2;
+        `
+        await pool.query(query,[shopingList,userId])
+    } catch (err) {
+        throw err;
+    }
+
+}
+
+async function getShoppingList(userId) {
+    try {
+        const query = `
+            SELECT shoping_list FROM users_config WHERE user_id = $1; 
+        `
+        const result = await pool.query(query, [userId]);
+        return result.rows[0];
+    } catch (err) {
+        throw err;
+    }
+}
+
 async function deleteRecipe(recipeId) {
     try {
         const query = `
@@ -222,6 +262,20 @@ async function deleteRecipe(recipeId) {
         await pool.query(query, [recipeId]);
     } catch (error) {
         throw(error)
+    }
+}
+
+async function deleteShopingList(userId) {
+    try {
+        const query = `
+            UPDATE users_config 
+            SET shoping_list = NULL 
+            WHERE user_id = $1;
+        `
+        await pool.query(query, [userId])
+
+    } catch (err) {
+        throw err;
     }
 }
 
@@ -237,6 +291,20 @@ async function testDbConnection() {
 
 
 
+
+/*
+
+async function addToShopingList(params) {
+    try {
+
+    }
+}
+
+async function removeFromShopingList(params) {
+
+}
+*/
+
 module.exports = {
     getTable,
     getProducts,
@@ -249,5 +317,9 @@ module.exports = {
     getRecipe,
     getProductsFromList,
     testDbConnection,
+    getOneProduct,
+    updateShoppingList,
+    getShoppingList,
+    deleteShopingList,
     
 }

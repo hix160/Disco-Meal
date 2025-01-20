@@ -1,0 +1,24 @@
+
+
+
+.list-item {
+    display: flex;
+    gap: 1vh;
+    align-items: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    max-width: 50%;
+    width: 90%;
+    padding: 0 1vw;
+    margin: 3vh 0;
+
+    
+}
+
+.ShopingList {
+    & button {
+        background-color: rgba(0, 0, 0, 0.1);
+        border: 0;
+        font-size: 3vh;
+        padding: 1vh 2vh;
+    }
+}

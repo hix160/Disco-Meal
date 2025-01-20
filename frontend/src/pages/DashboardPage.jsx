@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 
 import Discounts from '../components/Discounts';
 import Recipes from '../components/Recipes';
+import ShopingList from '../components/ShopingList';
 
-import tempImg from '../assets/temp.jpg';
+
 import './styles/DashboardPage.css';
 
 const DashboardPage = () => {
@@ -48,35 +49,20 @@ const DashboardPage = () => {
                     className={activeButton === 'ShoppingList' ? 'active' : ''}
                     >Produktu Saraksts</button>
 
-                    <button 
-                    onClick={() => handleContentChange('Savings')}
-                    className={activeButton === 'Savings' ? 'active' : ''}
-                    >Mans Ietaupījums</button>
+                    
 
-                    <button 
-                    onClick={() => handleContentChange('Explore')}
-                    className={activeButton === 'Explore' ? 'active' : ''}
-                    >Gatavo Citi!</button>
-
-                    <button 
-                    onClick={() => handleContentChange('About')}
-                    className={activeButton === 'About' ? 'active' : ''}
-                    >Par</button>
+                    
                 </div>
                 
-                <div className='profile'>
-                    <img src={tempImg} alt="Profile" />
-                    <div>@{user.username}</div>
-                </div>
+                
             </div>
 
             <div className='content'>
                 {content === 'Discounts' && <Discounts />}
                 {content === 'Recipes' && <Recipes />}
-                {content === 'ShoppingList' && <div>Produktu Saraksts Content</div>}
-                {content === 'Savings' && <div>Mans Ietaupījums Content</div>}
-                {content === 'Explore' && <div>Gatavo Citi! Content</div>}
-                {content === 'About' && <div>Par Content</div>}
+                {content === 'ShoppingList' && <ShopingList/>}
+                
+                
             </div>
         </div>
     ) : null; // Show nothing while redirecting

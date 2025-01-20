@@ -125,6 +125,37 @@ function Discounts() {
         }
     }
 
+    const addProductToShopingList = async () => {
+        const user = JSON.parse(sessionStorage.getItem('user'))
+        const data = {tableName: tableName, productId: dropStyle.productId, userId:user.id};
+        
+        console.log(data);
+
+        try {
+            const response = await fetch(`${apiUrl}/shoping/add`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // Add a custom header to track the request
+                    "X-Request-ID": Date.now().toString()
+                },
+                body: JSON.stringify(data),
+            })
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+    
+            const result = await response.json();
+            console.log('Product added to shoping list', result);
+            return result;
+        } catch (err) {
+            
+            // Optionally, you can set an error state here to display to the user
+            setError('Failed to add product to shopinglist. Please try again.');
+        }
+    }
+
     async function postProductInRecipe(data) {
         try {
             console.log('Sending request to add product to recipe:', data);
@@ -213,7 +244,7 @@ function Discounts() {
                     ):(
                         <div style={{display:'flex', flexDirection:'column', gap:'1vh'}}>
                             <button onClick={()=>{setShowList(true)}}>Pievienot Receptei </button>
-                            <button onClick={()=>{setTempText('Pievienots sarakstam')}}>Pievienot Sarakstam</button>
+                            <button onClick={()=>{setDropStyle({ opacity: '0', visibility: 'hidden'}), addProductToShopingList()}}>Pievienot Sarakstam</button>
                             <button onClick={() => {setDropStyle({ opacity: '0', visibility: 'hidden'}), setTempText('')}}>Atcelt</button>
                         </div>
                         

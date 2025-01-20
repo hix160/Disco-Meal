@@ -17,6 +17,10 @@ indexRouter.post('/recipe', indexController.insertRecipe);
 indexRouter.post('/recipe/edit', indexController.editRecipe);
 indexRouter.post('/recipe/add', indexController.updateRecipeProductList);
 
+indexRouter.post('/shoping/add', indexController.updateShopingList);
+indexRouter.get('/shoping/:userId', indexController.getShopingList)
+indexRouter.get('/shoping/:userId/delete', indexController.deleteShopingList)
+
 
 indexRouter.get('/recipe/:userId', indexController.getRecipes);
 

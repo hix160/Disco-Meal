@@ -233,6 +233,66 @@ async function getProducts(tableName, productIds) {
     }
 }
 
+async function updateShopingList(req, res) {
+
+    try {
+        const {tableName, productId, userId} = req.body;
+
+        const productObject = await db.getOneProduct(tableName, productId);
+
+        let result = await db.getShoppingList(userId)
+        let shopingList = result.shoping_list
+        console.log(result.shoping_list)
+
+        if(!shopingList) {
+            
+            shopingList = {
+                products:[productObject]
+            }
+            console.log(shopingList);
+            await db.updateShoppingList(userId, shopingList);
+        }
+        else {
+            shopingList.products.push(productObject)
+            await db.updateShoppingList(userId, shopingList);
+        }
+        
+        res.status(200).json({ success: true, shopingList });
+
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: 'An error occurred while updating the shopping list.' });
+    }
+}
+
+async function getShopingList(req, res) {
+    try {
+        const userId = req.params.userId;
+        const result = await db.getShoppingList(userId)
+        res.json(result);
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function deleteShopingList(req, res) {
+    try {
+        const userId = req.params.userId;
+        const result = await db.deleteShopingList(userId)
+        res.status(200).json({msg:"done"})
+    } catch (err) {
+        throw err;
+    }
+}
+
+
+
+/*
+getshopinglist
+deletshopinglist
+
+*/
+
 
 
 async function test(req, res) {    //just a test/debuging function
@@ -273,6 +333,9 @@ module.exports = {
     getRecipes,
     editRecipe,
     updateRecipeProductList,
+    updateShopingList,
+    getShopingList,
+    deleteShopingList,
     test,
     testDb
 }

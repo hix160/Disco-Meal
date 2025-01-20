@@ -55,12 +55,23 @@ function Recipes() {
         else setDeleteRecipe(!deleteRecipe);
     }
 
-    const handleCardClick = (index) => {
-        setSelectedRecipe(recipeList[index]);
-        setRecipeId(recipeList[index].id);
-        setPublic(recipeList[index].is_public);
-        setAddRecipe(false);
-        setShowRecipe(true);
+    const handleUpdateShopingList = (index) => {
+        
+    }
+
+    const handleCardClick = (index, addToShoping) => {
+        if(addToShoping == false) {
+            setSelectedRecipe(recipeList[index]);
+            console.log(recipeList.product_list)
+            setRecipeId(recipeList[index].id);
+            setPublic(recipeList[index].is_public);
+            setAddRecipe(false);
+            setShowRecipe(true);
+            
+        } else {
+            handleUpdateShopingList(index);
+        }
+        
     }
 
     return (

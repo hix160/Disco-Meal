@@ -17,7 +17,7 @@ function useRecipes() {
         throw new Error('Failed to fetch recipes');
       }
       const data = await result.json();
-      console.log(data);
+      
       setRecipeList(data);
       setError(null);
     } catch (err) {
